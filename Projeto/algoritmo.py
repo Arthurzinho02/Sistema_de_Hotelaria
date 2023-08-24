@@ -1,5 +1,5 @@
 from classes import *
-import os
+
 
 def main():
     print("Bem vindo! Você está no Hotel ARNI.")
