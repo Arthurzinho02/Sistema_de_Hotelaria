@@ -7,8 +7,9 @@ def main():
     y = 1
     while y == 1:
         try:
-            print("O que deseja?\n[1] Cadastrar-se\n[2] Alugar quartos\n[3] Sair")
+            print("O que deseja?\n[1] Cadastrar-se\n[2] Alugar quartos\n[3] Desmarcar \n[4] Sair")
             escolha = input("- ")
+
             os.system("pause")
             os.system("cls")
 
@@ -59,6 +60,24 @@ def main():
                     os.system("cls")
 
             elif escolha == "3":
+                print("=== Desmarcar ===")
+                print("Insira os dados para login:")
+                emaillogin = input("E-mail: ")
+                senhalogin = input("Senha: ")
+                os.system("pause")
+                os.system("cls")
+                if recepcionista.login(emaillogin, senhalogin) == 1:
+                    recepcionista.clientevizualizar(emaillogin)
+                    quarto = input("Digite o nome do quarto que deseja excluir: \n-").upper()
+                    recepcionista.desmarcar(emaillogin, quarto)
+                    os.system("pause")
+                    os.system("cls")
+                elif recepcionista.login(emaillogin, senhalogin) == 2:
+                    print("Cliente não existe ou não  encontrado.")
+                    os.system("pause")
+                    os.system("cls")
+
+            elif escolha == "4":
                 y = 0
                 
         except Exception as erro:
