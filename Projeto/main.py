@@ -1,2 +1,2 @@
-from algoritmo import *
-if __name__ == '__main__':
+# from algoritmo import *
+# if __name__ == '__main__':
