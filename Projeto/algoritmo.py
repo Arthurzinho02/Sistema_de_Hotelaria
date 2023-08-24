@@ -60,8 +60,8 @@ def main():
                     os.system("cls")
 
             elif escolha == "3":
-                print("=== Desmarcar ===")
-                print("Insira os dados para login:")
+                print ("=== Cancelamento de Reserva ===") 
+                print ("Insira os seus dados para realizar o cancelamento:")
                 emaillogin = input("E-mail: ")
                 senhalogin = input("Senha: ")
                 os.system("pause")
@@ -70,6 +70,7 @@ def main():
                     recepcionista.clientevizualizar(emaillogin)
                     quarto = input("Digite o nome do quarto que deseja excluir: \n-").upper()
                     recepcionista.desmarcar(emaillogin, quarto)
+                    print("Seu cancelamento foi realizado com sucesso!")
                     os.system("pause")
                     os.system("cls")
                 elif recepcionista.login(emaillogin, senhalogin) == 2:
