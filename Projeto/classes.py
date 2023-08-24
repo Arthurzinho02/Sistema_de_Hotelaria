@@ -40,11 +40,31 @@ class Luxo(Hotel):
         else:
             print("Indisponível")
 
-class master()
+class master(Hotel):
+    def mastercadastro(self, email):
+        if self.limmaster <= 2 and self.limmaster > 0:
+            for cliente in self.nomes:
+                if cliente.email == email:
+                    self.clientes[cliente] = "luxo"
+                    self.limmaster = self.limmaster - 1
+                else:
+                    print("Cliente não encontrado")
+        else:
+            print("Indisponível")
 
+class Simples(Hotel):
+    def simplescadastro(self, email):
+        if self.limsimples <= 2 and self.limsimples > 0:
+            for cliente in self.nomes:
+                if cliente.email == email:
+                    self.clientes[cliente] = "luxo"
+                    self.limsimples = self.limsimples - 1
+                else:
+                    print("Cliente não encontrado")
+        else:
+            print("Indisponível")
+
+class SimplesCasal(Hotel):
         
 hotel = Hotel()
-
-oi = Luxo()
-oi.luxocadastro("arthur", "arthur@gmail.com", 12345)
 
