@@ -11,6 +11,7 @@ def main():
         emailcadastro = input("E-mail: ")
         senhacadastro = input("Senha: ")
         #Salvar nome, email e senha para login depois
+        hotel.cadastrar(nomecadastro, emailcadastro, senhacadastro)
 
     elif escolha == "2":
         print("=== Alugar Quartos ===")
