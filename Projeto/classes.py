@@ -47,4 +47,3 @@ hotel = Hotel()
 
 oi = Luxo()
 oi.luxocadastro("arthur", "arthur@gmail.com", 12345)
-
