@@ -1,5 +1,6 @@
 from classes import *
-
+import os
+import time
 
 def main():
     print("Bem vindo! Você está no Hotel ARNI.")
@@ -8,6 +9,8 @@ def main():
         try:
             print("O que deseja?\n[1] Cadastrar-se\n[2] Alugar quartos\n[3] Sair")
             escolha = input("- ")
+            os.system("pause")
+            os.system("cls")
 
             if escolha == "1":
                 print("=== Área de Cadastro ===")
@@ -17,6 +20,8 @@ def main():
                 #Salvar nome, email e senha para login depois
                 recepcionista.Cadastrar(nomecadastro, emailcadastro, senhacadastro)
                 print("Parabéns! Seu E-mail foi cadastrado. ")
+                os.system("pause")
+                os.system("cls")
 
             elif escolha == "2":
                 print("=== Alugar Quartos ===")
@@ -24,6 +29,8 @@ def main():
                 print("Insira os dados para login:")
                 emaillogin = input("E-mail: ")
                 senhalogin = input("Senha: ")
+                os.system("pause")
+                os.system("cls")
                 #Comparar os dados de login se há algum usuário já cadastrado
                 if recepcionista.login(emaillogin, senhalogin) == 1:
                     print("Bem vindo! \nQuartos Disponíveis:")
@@ -43,10 +50,14 @@ def main():
                         recepcionista.DuoCasalCadastro(emaillogin)
                     else:
                         print("O quarto não existe!")
-                    
+                    time.sleep(1.5)
+                    os.system("cls")
+
                 elif recepcionista.login(emaillogin, senhalogin) == 2:
                     print("Cliente não existe ou não  encontrado.")
-                    
+                    os.system("pause")
+                    os.system("cls")
+
             elif escolha == "3":
                 y = 0
                 
