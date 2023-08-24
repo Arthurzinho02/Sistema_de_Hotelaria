@@ -32,14 +32,14 @@ class Hotel:
 class Quartos(Hotel):
     def clientevizualizar(self, email):
         for chave, valor in self.clientes.items():
-            if chave == email:
-                print(f"{chave} | {valor}")
+            if chave.email == email:
+                print(f"{chave.nome} | {valor}")
             else:
                 print("E-mail não encontrado")
         
     def desmarcar(self, email, quarto):
         for chave, valor in self.clientes.items():
-            if chave == email:
+            if chave.email == email:
                 if valor == quarto:
                     self.clientes.pop(chave)
                     print(f"Quarto {quarto} excluido")
@@ -53,7 +53,7 @@ class Quartos(Hotel):
         if self.limluxo <= 2 and self.limluxo > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente.email] = "LUXO"
+                    self.clientes[cliente] = "LUXO"
                     self.limluxo = self.limluxo - 1
                     print(f"Quarto de Luxo alugado por {cliente.nome}")
                 else:
@@ -65,7 +65,7 @@ class Quartos(Hotel):
         if self.limmaster <= 2 and self.limmaster > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente.email] = "MASTER"
+                    self.clientes[cliente] = "MASTER"
                     self.limmaster = self.limmaster - 1
                     print(f"Quarto Master alugado por {cliente.nome}")
                 else:
@@ -77,7 +77,7 @@ class Quartos(Hotel):
         if self.limsimples <= 3 and self.limsimples > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente.email] = "SIMPLES"
+                    self.clientes[cliente] = "SIMPLES"
                     self.limsimples = self.limsimples - 1
                     print(f"Quarto simples alugado por {cliente.nome}")
                 else:
@@ -89,7 +89,7 @@ class Quartos(Hotel):
         if self.limsimplescasal <= 3 and self.limsimplescasal > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente.email] = "SIMPLES CASAL"
+                    self.clientes[cliente] = "SIMPLES CASAL"
                     self.limsimplescasal = self.limsimplescasal - 1
                     print(f"Quarto Simples de Casal alugado por {cliente.nome}")
                 else:
@@ -101,7 +101,7 @@ class Quartos(Hotel):
         if self.limduo <= 3 and self.limduo > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente.email] = "DUO"
+                    self.clientes[cliente] = "DUO"
                     self.limduo = self.limduo - 1
                     print(f"Quarto duplo alugado por {cliente.nome}")
                 else:
@@ -113,7 +113,7 @@ class Quartos(Hotel):
         if self.limduocasal <= 3 and self.limduocasal > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente.email] = "DUO CASAL"
+                    self.clientes[cliente] = "DUO CASAL"
                     self.limduocasal = self.limduo - 1
                     print(f"Quarto Duo de Casal alugado por {cliente.nome}")
                 else:
