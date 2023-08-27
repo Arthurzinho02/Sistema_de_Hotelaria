@@ -37,7 +37,7 @@ class Quartos(Hotel):
             else:
                 print("E-mail não encontrado")
         
-    def desmarcar(self, email, quarto):
+    def Cancelar(self, email, quarto):
         for chave, valor in self.clientes.items():
             if chave.email == email:
                 if valor == quarto:
