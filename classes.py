@@ -14,6 +14,7 @@ class Hotel:
         self.limsimplescasal = 3
         self.limduo = 3
         self.limduocasal = 3
+        self.quartos = ["Luxo", "Master", "Simples", "Simples Casal", "Duo", "Duo Casal"]
     
     def Visualizar(self):
         print(f"[1]Luxo: {self.limluxo} \n[2]Master: {self.limmaster} \n[3]Simples: {self.limsimples} \n[4]Simples Casal: {self.limsimplescasal} \n[5]Duplo Simples: {self.limduo} \n[6]Duplo Casal: {self.limduocasal}")
@@ -30,12 +31,12 @@ class Hotel:
                 return 2
 
 class Quartos(Hotel):
-    def clientevizualizar(self, email):
+    def ClienteVisualizar(self, nome):
         for chave, valor in self.clientes.items():
-            if chave.email == email:
+            if chave.nome == nome:
                 print(f"{chave.nome} | {valor}")
             else:
-                print("E-mail não encontrado")
+                print("Nome não encontrado")
         
     def Cancelar(self, email, quarto):
         for chave, valor in self.clientes.items():
@@ -43,17 +44,13 @@ class Quartos(Hotel):
                 if valor == quarto:
                     self.clientes.pop(chave)
                     print(f"Quarto {quarto} excluido")
-                else:
-                    print("Quarto não encontrado")
-            else:
-                print("Cliente não encontrado")
                 
         
     def LuxoCadastro(self, email):
         if self.limluxo <= 2 and self.limluxo > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente] = "LUXO"
+                    self.clientes[cliente] = self.quartos[0]
                     self.limluxo = self.limluxo - 1
                     print(f"Quarto de Luxo alugado por {cliente.nome}")
                 else:
@@ -65,7 +62,7 @@ class Quartos(Hotel):
         if self.limmaster <= 2 and self.limmaster > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente] = "MASTER"
+                    self.clientes[cliente] = self.quartos[1]
                     self.limmaster = self.limmaster - 1
                     print(f"Quarto Master alugado por {cliente.nome}")
                 else:
@@ -77,7 +74,7 @@ class Quartos(Hotel):
         if self.limsimples <= 3 and self.limsimples > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente] = "SIMPLES"
+                    self.clientes[cliente] = self.quartos[2]
                     self.limsimples = self.limsimples - 1
                     print(f"Quarto simples alugado por {cliente.nome}")
                 else:
@@ -89,7 +86,7 @@ class Quartos(Hotel):
         if self.limsimplescasal <= 3 and self.limsimplescasal > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente] = "SIMPLES CASAL"
+                    self.clientes[cliente] = self.quartos[3]
                     self.limsimplescasal = self.limsimplescasal - 1
                     print(f"Quarto Simples de Casal alugado por {cliente.nome}")
                 else:
@@ -101,7 +98,7 @@ class Quartos(Hotel):
         if self.limduo <= 3 and self.limduo > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente] = "DUO"
+                    self.clientes[cliente] = self.quartos[4]
                     self.limduo = self.limduo - 1
                     print(f"Quarto duplo alugado por {cliente.nome}")
                 else:
@@ -113,7 +110,7 @@ class Quartos(Hotel):
         if self.limduocasal <= 3 and self.limduocasal > 0:
             for cliente in self.nomes:
                 if cliente.email == email:
-                    self.clientes[cliente] = "DUO CASAL"
+                    self.clientes[cliente] = self.quartos[5]
                     self.limduocasal = self.limduo - 1
                     print(f"Quarto Duo de Casal alugado por {cliente.nome}")
                 else:

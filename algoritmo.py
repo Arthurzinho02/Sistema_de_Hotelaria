@@ -2,12 +2,11 @@ from classes import *
 import os
 
 def main():
-    print("Bem vindo! Você está no Hotel ARNI.")
-
     y = 1
     while y == 1:
         try:
-            print("O que deseja?\n[1] Cadastrar-se\n[2] Alugar quartos\n[3] Cancelamento de reserva\n[4] Sair")
+            print("Bem vindo! Você está no Hotel ARNI.")
+            print("O que deseja?\n[1] Cadastrar-se\n[2] Alugar quartos\n[3] Cancelamento de reserva\n[4] Visualizar Reservas\n[5] Sair")
             escolha = input("- ")
             os.system("cls")
 
@@ -32,38 +31,48 @@ def main():
                 os.system("cls")
 
                 if recepcionista.login(emaillogin, senhalogin) == 1:
-                    print("Bem vindo!\nQuartos Disponíveis:")
+                    print("Bem vindo!\nQuartos Disponíveis:\n")
                     recepcionista.Visualizar()
 
-                    x = input("Qual quarto deseja alugar?\n- ")
+                    x = input("\nQual quarto deseja alugar?\n- ")
 
                     if x == "1":
                         recepcionista.LuxoCadastro(emaillogin)
+                        os.system("pause")
+                        os.system("cls")
 
                     elif x == "2":
                         recepcionista.MasterCadastro(emaillogin)
+                        os.system("pause")
+                        os.system("cls")
 
                     elif x == "3":
                         recepcionista.SimplesCadastro(emaillogin)
+                        os.system("pause")
+                        os.system("cls")
 
                     elif x == "4":
                         recepcionista.SimplesCasalCadastro(emaillogin)
+                        os.system("pause")
+                        os.system("cls")
 
                     elif x == "5":
                         recepcionista.DuoCadastro(emaillogin)
+                        os.system("pause")
+                        os.system("cls")
 
                     elif x == "6":
                         recepcionista.DuoCasalCadastro(emaillogin)
+                        os.system("pause")
+                        os.system("cls")
 
                     else:
                         print("O quarto não existe.")
                     
-                    os.system("pause")
-                    os.system("cls")
-                    
                 elif recepcionista.login(emaillogin, senhalogin) == 2:
                     print("Cliente não existe ou não foi encontrado.")
                     os.system("pause")
+                    os.system("cls")
 
             elif escolha == "3":
                 print ("=== Cancelamento de Reserva ===") 
@@ -71,9 +80,12 @@ def main():
                 emaillogin = input("E-mail: ")
                 senhalogin = input("Senha: ")
                 recepcionista.Cancelar(emaillogin, senhalogin)
-                print("Seu cancelamento foi realizado com sucesso!")
 
             elif escolha == "4":
+                print ("=== Visualizar Reservas ===")
+                recepcionista.ClienteVisualizar()
+
+            elif escolha == "5":
                 y = 0
                 
         except Exception as erro:
