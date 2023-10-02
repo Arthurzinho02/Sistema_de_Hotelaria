@@ -3,7 +3,11 @@ class Cliente:
         self.nome = nome
         self.email = email
         self.senha = senha
+        self.reserva = []
 
+    def getReserva(self):
+        return self.reserva
+    
     def getNome(self):
         return self.nome
     
@@ -15,24 +19,14 @@ class Cliente:
     
 class Hotel:
     def __init__(self):
-        self.clientes = {} # Dicionario de clientes
-        self.nomes = [] # Lista de nomes
-        self.limluxo = 2
-        self.limmaster = 2
-        self.limsimples = 3
-        self.limsimplescasal = 3
-        self.limduo = 3
-        self.limduocasal = 3
-        self.quartos = ["Luxo", "Master", "Simples", "Simples Casal", "Duo", "Duo Casal"]
-
-    def Quartos(self):
-        cont = 0
-        for i in self.quartos:
-            cont += 1
-            print(f"{cont} - {i}")
+        self.nomes = [] # Lista de nomee
+        self.quartos = {"Luxo" : 2 , "Master" : 2 , "Simples" : 3, "Simples Casal" : 3, "Duo" : 3, "Duo Casal" : 3}
     
     def Visualizar(self):
-        print(f"[1]Luxo: {self.limluxo} \n[2]Master: {self.limmaster} \n[3]Simples: {self.limsimples} \n[4]Simples Casal: {self.limsimplescasal} \n[5]Duplo Simples: {self.limduo} \n[6]Duplo Casal: {self.limduocasal}")
+        cont = 0
+        for chave, valor in self.quartos.items():
+            cont += 1
+            print(f"{cont}- {chave}: {valor}")
         
     def Cadastrar(self, nome, email, senha):
         cliente = Cliente(nome, email, senha)
@@ -50,28 +44,32 @@ class Hotel:
     
 
 class Quartos(Hotel):
+
     def ClienteVisualizar(self, email):
         cont = 0
-        for chave, valor in self.clientes.items():
-            if chave.getEmail() == email:
-                cont += 1
-                print(f"{cont} - {valor}")
+        for cliente in self.nomes:
+            if cliente.getEmail() == email:
+                for i in cliente.getReserva():
+                    cont += 1
+                    print(f"{cont} - {i}")
             
         
     def Cancelar(self, email, vetorQ):
-        for chave, valor in self.clientes.items():
-            if chave.getEmail() == email and valor == self.quartos[vetorQ - 1]:
-                self.clientes.pop(chave)
-                break
+        for cliente in self.nomes:
+            if cliente.getEmail() == email:
+                self.quartos[cliente.getReserva()[vetorQ -1]] += 1
+                cliente.getReserva().pop(vetorQ - 1)
+                
+                    
                     
                 
         
     def LuxoCadastro(self, email):
-        if self.limluxo <= 2 and self.limluxo > 0:
+        if self.quartos["Luxo"] <= 2 and self.quartos["Luxo"] > 0:
             for cliente in self.nomes:
                 if cliente.getEmail() == email:
-                    self.clientes[cliente] = self.quartos[0]
-                    self.limluxo = self.limluxo - 1
+                    cliente.getReserva().append("Luxo")
+                    self.quartos["Luxo"] -= 1
                     print(f"Quarto de Luxo alugado por {cliente.getNome()}")
                 else:
                     print("Cliente não encontrado")
@@ -79,11 +77,11 @@ class Quartos(Hotel):
             print("Indisponível")
 
     def MasterCadastro(self, email):
-        if self.limmaster <= 2 and self.limmaster > 0:
+        if self.quartos["Master"] <= 2 and self.quartos["Master"] > 0:
             for cliente in self.nomes:
                 if cliente.getEmail() == email:
-                    self.clientes[cliente] = self.quartos[1]
-                    self.limmaster = self.limmaster - 1
+                    cliente.getReserva().append("Master")
+                    self.quartos["Master"] -= 1
                     print(f"Quarto Master alugado por {cliente.getNome()}")
                 else:
                     print("Cliente não encontrado")
@@ -91,11 +89,11 @@ class Quartos(Hotel):
             print("Indisponível")
 
     def SimplesCadastro(self, email):
-        if self.limsimples <= 3 and self.limsimples > 0:
+        if self.quartos["Simples"]  <= 3 and self.quartos["Simples"]  > 0:
             for cliente in self.nomes:
                 if cliente.getEmail() == email:
-                    self.clientes[cliente] = self.quartos[2]
-                    self.limsimples = self.limsimples - 1
+                    cliente.getReserva().append("Simples")
+                    self.quartos["Simples"] -= 1
                     print(f"Quarto simples alugado por {cliente.getNome()}")
                 else:
                     print("Cliente não encontrado")
@@ -103,11 +101,11 @@ class Quartos(Hotel):
             print("Indisponível")
 
     def SimplesCasalCadastro(self, email):
-        if self.limsimplescasal <= 3 and self.limsimplescasal > 0:
+        if self.quartos["Simples Casal"]  <= 3 and self.quartos["Simples Casal"]  > 0:
             for cliente in self.nomes:
                 if cliente.getEmail() == email:
-                    self.clientes[cliente] = self.quartos[3]
-                    self.limsimplescasal = self.limsimplescasal - 1
+                    cliente.getReserva().append("Simples Casal")
+                    self.quartos["Simples Casal"] -= 1
                     print(f"Quarto Simples de Casal alugado por {cliente.getNome()}")
                 else:
                     print("Cliente não encontrado")
@@ -115,11 +113,11 @@ class Quartos(Hotel):
             print("Indisponível")
 
     def DuoCadastro(self, email):
-        if self.limduo <= 3 and self.limduo > 0:
+        if self.quartos["Duo"] <= 3 and self.quartos["Duo"] > 0:
             for cliente in self.nomes:
                 if cliente.getEmail() == email:
-                    self.clientes[cliente] = self.quartos[4]
-                    self.limduo = self.limduo - 1
+                    cliente.getReserva().append("Duo")
+                    self.quartos["Duo"] -= 1
                     print(f"Quarto duplo alugado por {cliente.getNome()}")
                 else:
                     print("Cliente não encontrado")
@@ -127,11 +125,11 @@ class Quartos(Hotel):
             print("Indisponível")
 
     def DuoCasalCadastro(self, email):
-        if self.limduocasal <= 3 and self.limduocasal > 0:
+        if self.quartos["Duo Casal"] <= 3 and self.quartos["Duo Casal"] > 0:
             for cliente in self.nomes:
                 if cliente.getEmail() == email:
-                    self.clientes[cliente] = self.quartos[5]
-                    self.limduocasal = self.limduo - 1
+                    cliente.getReserva().append("Duo Casal")
+                    self.quartos["Duo Casal"] -= 1
                     print(f"Quarto Duo de Casal alugado por {cliente.getNome()}")
                 else:
                     print("Cliente não encontrado")

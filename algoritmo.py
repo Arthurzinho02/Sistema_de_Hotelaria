@@ -75,7 +75,7 @@ def main():
                                     
                                         case 3:
                                             print ("=== Cancelamento de Reserva ===") 
-                                            recepcionista.Quartos()
+                                            recepcionista.ClienteVisualizar(emaillogin)
                                             vetor = int(input("Digite o índice do quarto a ser excluido: "))
                                             recepcionista.Cancelar(emaillogin, vetor)
                                             print("Quarto excluido")
