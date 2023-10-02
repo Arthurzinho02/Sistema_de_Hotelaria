@@ -28,7 +28,7 @@ def Main():
                             while True:
                                 
                                 print(f"=== Bem vindo {recepcionista.getNomeCliente(emaillogin)}===")
-                                print("Deseja: \n[1] Vizualizar quartos \n[2] Alugar \n[3] Cancelar Reserva \n[4] Ver reservas \n[5] Sair")
+                                print("\nDeseja: \n[1] Visualizar quartos \n[2] Alugar \n[3] Cancelar Reserva \n[4] Ver reservas \n[5] Sair")
                                 opção = int(input(">> "))
                                 os.system("cls")
 
